@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🏋️‍♂️ Fitness & 🏍️ Bikes Showcase</title>
+  <style>
+    :root {
+      --bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      --glass: rgba(255, 255, 255, 0.1);
+      --text: #ffffff;
+      --accent: #ff6ec4;
+      --neon: #00ffe7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Grid Gallery */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .grid-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    .grid-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--neon);
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s, filter 0.4s;
+    }
+
+    .grid-item:hover img {
+      filter: brightness(70%) blur(1px);
+    }
+
+    .grid-item::after {
+      content: attr(data-title);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      padding: 0.5rem;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    /* Masking */
+    .masked {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto 4rem;
+      background: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg') center/cover no-repeat;
+      mask-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8e/Octagon_black.svg');
+      mask-size: cover;
+      mask-repeat: no-repeat;
+    }
+
+    /* Shape-outside */
+    .shape-container {
+      display: flex;
+      margin-bottom: 4rem;
+    }
+
+    .shape-img {
+      float: left;
+      shape-outside: circle(50%);
+      clip-path: circle(50%);
+      width: 200px;
+      height: 200px;
+      margin-right: 2rem;
+      background: url('https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg') center/cover no-repeat;
+    }
+
+    .shape-text {
+      max-width: 600px;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #dcdcdc;
+    }
+
+    /* Scroll Snap */
+    .scroll-gallery {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1.2rem;
+      padding-bottom: 2rem;
+      padding-top: 1rem;
+    }
+
+    .scroll-gallery img {
+      scroll-snap-align: center;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 14px;
+      flex: 0 0 auto;
+      box-shadow: 0 0 10px #00ffe7;
+      transition: transform 0.3s;
+    }
+
+    .scroll-gallery img:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏋️‍♂️ Fitness & 🏍️ Bikes Showcase</h1>
+
+  <!-- Grid Gallery -->
+  <div class="grid">
+    <div class="grid-item" data-title="DEADLIFT">
+      <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg" alt="">
+    </div>
+    <div class="grid-item" data-title="DUMBBELL">
+      <img src="https://images.pexels.com/photos/260352/pexels-photo-260352.jpeg" alt="">
+    </div>
+    <div class="grid-item" data-title="WEIGHTS">
+      <img src="https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg" alt="">
+    </div>
+    <div class="grid-item" data-title="CYCLE">
+      <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg" alt="">
+    </div>
+    <div class="grid-item" data-title="CITY-TRAFFIC">
+      <img src="https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg" alt="">
+    </div>
+    <div class="grid-item" data-title="ART-WORK">
+      <img src="https://images.pexels.com/photos/1704120/pexels-photo-1704120.jpeg" alt="">
+    </div>
+  </div>
+
+  <!-- Masked Image -->
+  <div class="masked"></div>
+
+  <!-- Shape Outside -->
+  <div class="shape-container">
+    <div class="shape-img"></div>
+    <p class="shape-text">
+      This is a creative use of <code>shape-outside</code> in CSS to let text wrap around a floated circular image. This technique is ideal for modern layouts and dynamic UI storytelling.
+    </p>
+  </div>
+
+  <!-- Scroll Snapping -->
+  <div class="scroll-gallery">
+    <img src="https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg" alt="Scroll 1">
+    <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg" alt="Scroll 2">
+    <img src="https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg" alt="Scroll 3">
+    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg" alt="Scroll 4">
+  </div>
+
+  <footer>
+    🚀 Designed with 💖 by VRISH THADANI — 100% Pure HTML + CSS Showcase
+  </footer>
+
+</body>
+</html>
